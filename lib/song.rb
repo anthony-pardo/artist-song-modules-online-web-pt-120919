@@ -6,9 +6,7 @@ class Song
 
   @@songs = []
 
-  def initialize
-    self.class.all << self
-  end
+  include Memorable::InstanceMethods
 
   def self.find_by_name(name)
     @@songs.detect{|a| a.name == name}
@@ -18,7 +16,7 @@ class Song
     @@songs
   end
 
-  extend Memorable
+  extend Memorable::ClassMethods
 
   def artist=(artist)
     @artist = artist
